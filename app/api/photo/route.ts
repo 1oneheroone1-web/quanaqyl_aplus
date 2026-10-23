@@ -1,70 +1,63 @@
-import { identity, database, bucket, ensureProfile, protect, json, failure, ApiError, limitedBody } from '@/lib/server';
-export async function GET() { try {
-    const u = await identity();
-    const p = await database().prepare('SELECT photo_key FROM profiles WHERE user_id=?').bind(u.userId).first<any>();
-    if (!p?.photo_key)
-        return new Response(null, { status: 404 });
-    const file = await bucket().get(p.photo_key);
-    if (!file)
-        return new Response(null, { status: 404 });
-    return new Response(file.body, { headers: { 'Content-Type': file.httpMetadata?.contentType || 'application/octet-stream', 'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff' } });
-}
-catch (e) {
-    return failure(e);
-} }
-export async function POST(req: Request) { try {
-    protect(req);
-    const u = await identity();
-    if (Number(req.headers.get('content-length') || 0) > 2200000)
-        throw new ApiError('photo_size', 413);
-    let data: FormData;
+import { identity, ensureProfile, protect, json, failure, ApiError, limitedBody } from '@/lib/server';
+import { getPool, withTransaction } from '@/lib/database';
+
+export async function GET() {
     try {
-        const bytes = await limitedBody(req, 2200000);
-        data = await new Response(bytes.buffer as ArrayBuffer, { headers: { 'Content-Type': req.headers.get('content-type') || '' } }).formData();
-    }
-    catch (e) {
-        if (e instanceof ApiError)
-            throw new ApiError('photo_size', 413);
-        throw new ApiError('photo_type');
-    }
-    const file = data.get('photo');
-    if (!(file instanceof File) || file.size > 2097152 || file.size === 0)
-        throw new ApiError('photo_size');
-    const bytes = new Uint8Array(await file.arrayBuffer());
-    const png = bytes.length > 8 && [137, 80, 78, 71, 13, 10, 26, 10].every((v, i) => bytes[i] === v);
-    const jpg = bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255;
-    const webp = String.fromCharCode(...bytes.slice(0, 4)) === 'RIFF' && String.fromCharCode(...bytes.slice(8, 12)) === 'WEBP';
-    const type = png ? 'image/png' : jpg ? 'image/jpeg' : webp ? 'image/webp' : null;
-    if (!type || file.type !== type)
-        throw new ApiError('photo_type');
-    await ensureProfile(u);
-    const old = await database().prepare('SELECT photo_key FROM profiles WHERE user_id=?').bind(u.userId).first<any>();
-    const key = 'photos/' + crypto.randomUUID();
-    await bucket().put(key, bytes, { httpMetadata: { contentType: type } });
-    const stamp = Date.now();
+        const user = await identity();
+        const result = await getPool().query<{ bytes: Buffer; content_type: string }>(
+            'SELECT bytes,content_type FROM photos WHERE user_id=$1', [user.userId]);
+        const photo = result.rows[0];
+        if (!photo) return new Response(null, { status: 404 });
+        return new Response(new Uint8Array(photo.bytes), { headers: {
+            'Content-Type': photo.content_type,
+            'Cache-Control': 'private, no-store',
+            'X-Content-Type-Options': 'nosniff',
+        } });
+    } catch (error) { return failure(error); }
+}
+
+export async function POST(req: Request) {
     try {
-        await database().prepare('UPDATE profiles SET photo_key=?,updated_at=? WHERE user_id=?').bind(key, stamp, u.userId).run();
-    }
-    catch (e) {
-        await bucket().delete(key);
-        throw e;
-    }
-    if (old?.photo_key)
-        await bucket().delete(old.photo_key).catch(() => { });
-    return json({ photo: '/api/photo?v=' + stamp });
+        protect(req);
+        const user = await identity();
+        let data: FormData;
+        try {
+            const body = await limitedBody(req, 2_200_000);
+            data = await new Response(body.buffer as ArrayBuffer, {
+                headers: { 'Content-Type': req.headers.get('content-type') || '' },
+            }).formData();
+        } catch (error) {
+            if (error instanceof ApiError) throw new ApiError('photo_size', 413);
+            throw new ApiError('photo_type');
+        }
+        const file = data.get('photo');
+        if (!(file instanceof File) || file.size > 2_097_152 || file.size === 0) throw new ApiError('photo_size');
+        const bytes = new Uint8Array(await file.arrayBuffer());
+        const png = bytes.length > 8 && [137, 80, 78, 71, 13, 10, 26, 10].every((value, i) => bytes[i] === value);
+        const jpg = bytes[0] === 255 && bytes[1] === 216 && bytes[2] === 255;
+        const webp = String.fromCharCode(...bytes.slice(0, 4)) === 'RIFF' && String.fromCharCode(...bytes.slice(8, 12)) === 'WEBP';
+        const type = png ? 'image/png' : jpg ? 'image/jpeg' : webp ? 'image/webp' : null;
+        if (!type || file.type !== type) throw new ApiError('photo_type');
+        await ensureProfile(user);
+        const stamp = Date.now(), marker = 'photos/' + crypto.randomUUID();
+        await withTransaction(async client => {
+            await client.query(`INSERT INTO photos (user_id,content_type,bytes,updated_at) VALUES ($1,$2,$3,$4)
+                ON CONFLICT(user_id) DO UPDATE SET content_type=EXCLUDED.content_type,bytes=EXCLUDED.bytes,updated_at=EXCLUDED.updated_at`,
+            [user.userId, type, Buffer.from(bytes), stamp]);
+            await client.query('UPDATE profiles SET photo_key=$1,updated_at=$2 WHERE user_id=$3', [marker, stamp, user.userId]);
+        });
+        return json({ photo: '/api/photo?v=' + stamp });
+    } catch (error) { return failure(error); }
 }
-catch (e) {
-    return failure(e);
-} }
-export async function DELETE(req: Request) { try {
-    protect(req);
-    const u = await identity();
-    const old = await database().prepare('SELECT photo_key FROM profiles WHERE user_id=?').bind(u.userId).first<any>();
-    await database().prepare('UPDATE profiles SET photo_key=NULL,updated_at=? WHERE user_id=?').bind(Date.now(), u.userId).run();
-    if (old?.photo_key)
-        await bucket().delete(old.photo_key).catch(() => { });
-    return json({ photo: null });
+
+export async function DELETE(req: Request) {
+    try {
+        protect(req);
+        const user = await identity();
+        await withTransaction(async client => {
+            await client.query('DELETE FROM photos WHERE user_id=$1', [user.userId]);
+            await client.query('UPDATE profiles SET photo_key=NULL,updated_at=$1 WHERE user_id=$2', [Date.now(), user.userId]);
+        });
+        return json({ photo: null });
+    } catch (error) { return failure(error); }
 }
-catch (e) {
-    return failure(e);
-} }

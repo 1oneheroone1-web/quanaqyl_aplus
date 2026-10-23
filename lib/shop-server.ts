@@ -1,9 +1,10 @@
 import { shopProducts, validatePurchase, ShopError, type PurchaseReceipt, type ShopState } from './shop';
+import type { Database } from './database';
 
 const receiptColumns = 'id, product_id AS productId, quantity, unit_price AS unitPrice, total, created_at AS createdAt';
 
-export async function getShopState(db: D1Database, userId: string): Promise<ShopState> {
-  // A D1 batch gives the wallet and collection one consistent snapshot.
+export async function getShopState(db: Database, userId: string): Promise<ShopState> {
+  // A transaction gives the wallet and collection one consistent snapshot.
   const [wallet, inventory, history] = await db.batch([
     db.prepare(`SELECT COALESCE((SELECT SUM(amount) FROM awards WHERE user_id=?),0) AS earned,
       COALESCE((SELECT SUM(total) FROM shop_purchases WHERE user_id=?),0) AS spent`).bind(userId, userId),
@@ -15,7 +16,7 @@ export async function getShopState(db: D1Database, userId: string): Promise<Shop
     inventory: inventory.results as ShopState['inventory'], purchases: history.results as PurchaseReceipt[] };
 }
 
-export async function purchaseProduct(db: D1Database, userId: string, input: unknown) {
+export async function purchaseProduct(db: Database, userId: string, input: unknown) {
   const request = validatePurchase(input);
   const product = shopProducts.find(p => p.id === request.productId)!;
   const readReceipt = () => db.prepare(`SELECT ${receiptColumns} FROM shop_purchases WHERE user_id=? AND id=?`)
@@ -23,8 +24,8 @@ export async function purchaseProduct(db: D1Database, userId: string, input: unk
   let receipt = await readReceipt();
   if (!receipt) {
     const total = product.price * request.quantity;
-    // Checking funds and spending them is ONE atomic statement. Concurrent tabs
-    // cannot spend the same balance. The client never supplies a trusted price.
+    // The adapter runs this statement in a serializable transaction and retries
+    // serialization conflicts, so concurrent tabs cannot spend the same funds.
     await db.prepare(`INSERT INTO shop_purchases (user_id,id,product_id,quantity,unit_price,total,created_at)
       SELECT ?,?,?,?,?,?,? WHERE
         COALESCE((SELECT SUM(amount) FROM awards WHERE user_id=?),0) -

@@ -38,7 +38,7 @@ async function compile(name) {
 }
 const escape = value => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
 try {
-  await symlink(join(root, 'node_modules'), join(directory, 'node_modules'), 'dir');
+  await symlink(join(root, 'node_modules'), join(directory, 'node_modules'), process.platform === 'win32' ? 'junction' : 'dir');
   const load = async name => import(pathToFileURL(await compile(name)).href);
   const { default: TheoryLibrary } = await load('components/theory-library');
   const { default: PhysicsHub } = await load('components/physics-hub');

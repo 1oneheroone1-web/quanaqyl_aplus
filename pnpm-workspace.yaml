@@ -1,4 +1,4 @@
-# Copied Sites are standalone projects and cannot inherit the monorepo policy.
+# Keep dependency release-age and build-script checks for this standalone app.
 minimumReleaseAge: 10080
 minimumReleaseAgeIgnoreMissingTime: false
 trustLockfile: false
@@ -8,14 +8,9 @@ allowBuilds:
   fsevents: true
   sharp: true
   unrs-resolver: true
-  workerd: true
-storeDir: ${SITES_PNPM_SHARED_STORE:-.sites-runtime/pnpm-store}
-cacheDir: ${SITES_PNPM_SHARED_STORE:-.sites-runtime/pnpm-store}/policy-cache
 enableGlobalVirtualStore: false
 # A later project-only session must not mutate a shared-store inode through node_modules.
 packageImportMethod: clone-or-copy
-# The explicit installer owns dependency setup, including restored workspaces.
+# Dependency installation is explicit in CI and on Vercel.
 verifyDepsBeforeRun: false
 optimisticRepeatInstall: false
-overrides:
-  miniflare>sharp: 0.35.4

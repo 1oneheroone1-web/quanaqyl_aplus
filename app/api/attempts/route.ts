@@ -21,7 +21,7 @@ export async function POST(req: Request) {
         if (existing)
             return json(JSON.parse(existing.data));
         if (result.mode === 'practice') {
-            const paused = await db.prepare('SELECT 1 FROM pauses WHERE user_id=? AND end IS NULL LIMIT 1').bind(user.userId).first();
+            const paused = await db.prepare('SELECT 1 FROM pauses WHERE user_id=? AND "end" IS NULL LIMIT 1').bind(user.userId).first();
             if (paused)
                 throw new ApiError('paused', 409);
         }

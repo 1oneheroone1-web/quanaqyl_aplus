@@ -1,0 +1,19 @@
+.card h1 { margin: 20px 0 12px; font-size: 1.8rem; line-height: 1.25; }
+.brand { color: #10205c; font-size: 1.5rem; font-weight: 800; text-decoration: none; }
+.brand span { color: #087cff; }
+.form { margin-top: 24px; }
+.fields { border: 0; margin: 0; padding: 0; min-width: 0; }
+.field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; font-size: .95rem; font-weight: 600; }
+.field input { width: 100%; padding: 12px 14px; border: 1px solid #c4d8f0; border-radius: 9px; background: white; color: #10205c; font-size: 1rem; }
+.field input:focus-visible, .language select:focus-visible, .switch button:focus-visible, .back:focus-visible { outline: 3px solid #48a2ff; outline-offset: 3px; }
+.note { font-size: .85rem; color: #647c9c; margin: -4px 0 20px; line-height: 1.5; }
+.error { padding: 12px; border-radius: 8px; background: #fff0f2; color: #a8243a; font-size: .9rem; line-height: 1.5; margin: 0 0 18px; }
+.submit { width: 100%; justify-content: center; }
+.switch { text-align: center; font-size: .9rem; line-height: 1.7; margin: 22px 0 12px; }
+.switch button { padding: 2px; border: 0; background: none; color: #086cd7; text-decoration: underline; cursor: pointer; }
+.switch button:disabled { opacity: .6; cursor: wait; }
+.back { display: block; text-align: center; color: #537298; font-size: .9rem; text-decoration: underline; }
+.language { display: flex; align-items: center; gap: 10px; font-size: .85rem; color: #537298; }
+.language select { padding: 8px 10px; border: 1px solid #c4d8f0; border-radius: 9px; background: white; color: #10205c; }
+.actions { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+@media (max-width: 480px) { .card h1 { font-size: 1.5rem; } }

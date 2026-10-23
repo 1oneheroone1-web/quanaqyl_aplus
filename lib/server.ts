@@ -1,11 +1,9 @@
-import { env } from 'cloudflare:workers';
+import { database } from './database';
 import { getChatGPTUser } from '@/app/chatgpt-auth';
+import { authBaseURL } from '@/lib/auth';
 import { defaultProfile } from '@/lib/profile';
 import { getShopState } from '@/lib/shop-server';
-export function database() { const db = (env as any).DB as D1Database; if (!db)
-    throw new Error('Storage unavailable'); return db; }
-export function bucket() { const b = (env as any).BUCKET as R2Bucket; if (!b)
-    throw new Error('Upload storage unavailable'); return b; }
+export { database };
 export async function identity() { const u = await getChatGPTUser(); if (!u)
     throw new ApiError('unauthorized', 401); return u; }
 export class ApiError extends Error {
@@ -14,9 +12,13 @@ export class ApiError extends Error {
 export function json(data: unknown, status = 200) { return Response.json(data, { status, headers: { 'Cache-Control': 'private, no-store' } }); }
 export function failure(e: unknown) { if (e instanceof ApiError)
     return json({ error: e.message }, e.status); console.error('Account operation failed', e); return json({ error: 'storage_unavailable' }, 503); }
-export function protect(req: Request) { const origin = req.headers.get('origin'); if (origin && origin !== new URL(req.url).origin)
-    throw new ApiError('forbidden', 403); if (req.headers.get('sec-fetch-site') === 'cross-site')
-    throw new ApiError('forbidden', 403); }
+export function protect(req: Request) {
+    const origin = req.headers.get('origin');
+    // Next.js may normalize req.url to an internal host. Match the same trusted
+    // public origin used by authentication, rather than that internal URL.
+    if (origin && origin !== authBaseURL()) throw new ApiError('forbidden', 403);
+    if (req.headers.get('sec-fetch-site') === 'cross-site') throw new ApiError('forbidden', 403);
+}
 export async function limitedBody(req: Request, max = 65536) {
     if (Number(req.headers.get('content-length') || 0) > max)
         throw new ApiError('too_large', 413);
@@ -70,4 +72,21 @@ export async function account(user: {
     userId: string;
     displayName: string;
     email: string;
-}) { await ensureProfile(user); const db = database(); const [p, a, w, f, shop] = await Promise.all([db.prepare('SELECT data,photo_key,updated_at FROM profiles WHERE user_id=?').bind(user.userId).first<any>(), db.prepare('SELECT data FROM attempts WHERE user_id=? ORDER BY created_at DESC LIMIT 500').bind(user.userId).all<any>(), db.prepare('SELECT key,amount,created_at FROM awards WHERE user_id=? ORDER BY created_at DESC').bind(user.userId).all<any>(), db.prepare('SELECT id,start,end FROM pauses WHERE user_id=? ORDER BY start DESC').bind(user.userId).all<any>(), getShopState(db, user.userId)]); return { shop, profile: { ...defaultProfile(user.displayName), ...JSON.parse(p.data) }, photo: p.photo_key ? '/api/photo?v=' + p.updated_at : null, attempts: a.results.map(r => JSON.parse(r.data)), awards: w.results, pauses: f.results, email: user.email }; }
+}) {
+    await ensureProfile(user);
+    const db = database();
+    const [p, a, w, f, shop] = await Promise.all([
+        db.prepare('SELECT data,photo_key,updated_at FROM profiles WHERE user_id=?').bind(user.userId)
+            .first<{ data: string; photo_key: string | null; updated_at: number }>(),
+        db.prepare('SELECT data FROM attempts WHERE user_id=? ORDER BY created_at DESC LIMIT 500').bind(user.userId).all<{ data: string }>(),
+        db.prepare('SELECT key,amount,created_at FROM awards WHERE user_id=? ORDER BY created_at DESC').bind(user.userId)
+            .all<{ key: string; amount: number; created_at: number }>(),
+        db.prepare('SELECT id,start,"end" FROM pauses WHERE user_id=? ORDER BY start DESC').bind(user.userId)
+            .all<{ id: string; start: number; end: number | null }>(),
+        getShopState(db, user.userId),
+    ]);
+    if (!p) throw new Error('Profile creation did not persist');
+    return { shop, profile: { ...defaultProfile(user.displayName), ...JSON.parse(p.data) },
+        photo: p.photo_key ? '/api/photo?v=' + p.updated_at : null,
+        attempts: a.results.map(row => JSON.parse(row.data)), awards: w.results, pauses: f.results, email: user.email };
+}

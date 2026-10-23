@@ -56,7 +56,7 @@ function adapter(connection) {
   };
 }
 try {
-  await symlink(join(root, 'node_modules'), join(directory, 'node_modules'), 'dir');
+  await symlink(join(root, 'node_modules'), join(directory, 'node_modules'), process.platform === 'win32' ? 'junction' : 'dir');
   const load = async name => import(pathToFileURL(await compile(name)).href);
   const { shopProducts, validatePurchase, ShopError } = await load('lib/shop');
   const { getShopState, purchaseProduct } = await load('lib/shop-server');
