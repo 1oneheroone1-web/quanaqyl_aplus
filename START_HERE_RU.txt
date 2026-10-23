@@ -1,0 +1,78 @@
+QuanAQYL A+ — исходный код сайта
+Версия от 22 октября 2026 года, включая Pomodoro.
+Исходный коммит: e025e902291f3949580f18e393dcd4c9d8549792
+Сайт: https://quanaqyl-learning-portal.tokpetova-alua.chatgpt.site
+
+ЧТО В АРХИВЕ
+Полный код опубликованной версии: главная, диагностика, задачи,
+учебный план, Physics Hub, симуляция, прогресс, профиль, награды,
+магазин Kyōmei, коллекция и новый Pomodoro. Включены изображения,
+переводы EN/RU/KK, серверные API, схема БД, SQL-миграции и проверки.
+
+ТЕХНОЛОГИИ
+TypeScript/JavaScript, React, компоненты Next.js с сервером Vinext/Vite,
+CSS/Tailwind, Cloudflare Workers, D1 (SQLite) и R2 для фото.
+Это проект с серверной частью. Он не запускается двойным щелчком по HTML.
+Эта выгрузка относится к текущему сайту Sites; это не PHP/MySQL-версия
+для Beget FreeHosting. Для переноса на другой хостинг потребуется
+настроить сервер, базу, хранилище фото и надёжную авторизацию.
+
+КАК ЗАПУСТИТЬ
+1. Распакуйте ZIP и откройте папку QuanAQYL_Aplus в VS Code.
+2. Установите Node.js 22.13 или новее.
+3. Откройте терминал именно в этой папке и выполните:
+
+   corepack enable
+   pnpm install --frozen-lockfile
+   pnpm run build
+
+   Если corepack отсутствует, установите его отдельно либо установите
+   версию pnpm, указанную в packageManager файла package.json.
+
+4. Для НОВОЙ локальной базы выполните каждую команду один раз по порядку:
+
+   node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_useful_talisman.sql
+   node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0001_demonic_imperial_guard.sql
+   node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0002_rainy_blue_marvel.sql
+
+   Если база уже существует, не запускайте повторно применённые миграции.
+   Все команды выше работают локально, не с данными опубликованного сайта.
+
+5. Запустите:
+
+   pnpm run dev
+
+6. Откройте адрес, напечатанный в терминале (обычно http://localhost:5173).
+   На обычном компьютере используется встроенная локальная тестовая
+   личность. Настоящий вход через ChatGPT работает через платформу Sites.
+
+ПРОВЕРКИ
+   node scripts/check-focus.mjs
+   node scripts/check-shop.mjs
+   node scripts/check-learning.mjs
+   node scripts/check-physics-hub.mjs
+   pnpm exec tsc --noEmit
+   pnpm run build
+
+Эти проверки и сборка прошли в рабочей среде перед публикацией.
+Конфигурация вашего компьютера отдельно не проверена.
+
+КАКИЕ ДАННЫЕ НЕ ВКЛЮЧЕНЫ
+Архив содержит структуру базы и миграции, но не выгрузку аккаунтов,
+прогресса, покупок, сеансов или личных фотографий пользователей.
+Не включены секреты, .env, node_modules, Git-история, кэш и рабочая база.
+Зависимости устанавливаются командой pnpm install.
+
+Файл .openai/hosting.json относится к текущему сайту Sites. Это не пароль
+и не копия базы. Для другого сайта нужно использовать его собственный ID
+и настройки хранения; не публикуйте копию поверх текущего сайта случайно.
+
+ГДЕ РАЗОБРАТЬСЯ В КОДЕ
+README.md — подробное описание функций, файлов, формул и проверок.
+components/ — интерфейс; lib/ — данные и логика; app/api/ — сервер;
+db/ и drizzle/ — база; public/assets/ — изображения; scripts/ — проверки.
+Pomodoro: components/focus-*.tsx, lib/focus.ts, lib/focus-server.ts,
+app/api/focus/route.ts и app/focus.css.
+
+ZIP содержит неизменённые исходники опубликованного коммита плюс этот
+файл START_HERE_RU.txt. Отправка в GitHub и новая публикация не выполнялись.

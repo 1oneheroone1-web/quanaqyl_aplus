@@ -1,0 +1,42 @@
+.focus-widget { position:fixed;right:24px;bottom:24px;z-index:45;width:328px;max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);overflow:auto;border:1px solid #d7e8fc;border-radius:24px;background:linear-gradient(145deg,#fff,#f2f8ff);box-shadow:0 16px 54px #416ea526,0 2px 8px #416ea512;color:#19345e;--focus-accent:#1479f6;--focus-soft:#e2efff; }
+.focus-widget.is-rest { --focus-accent:#329681;--focus-soft:#dff3ec;background:linear-gradient(145deg,#fff,#effaf6); }
+.focus-widget-header { display:flex;align-items:center;gap:6px;min-height:51px;padding:9px 12px;border-bottom:1px solid #deebfa; }
+.focus-brand { display:flex;align-items:center;gap:8px;font-weight:750;font-size:14px;flex:1; }
+.focus-brand>svg { color:var(--focus-accent); }
+.focus-grip,.focus-icon,.focus-reset { display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;border:0;background:transparent;color:#617e9f;border-radius:10px;min-height:34px;min-width:30px;cursor:pointer; }
+.focus-grip { cursor:grab;touch-action:none;user-select:none; }.focus-grip:active{cursor:grabbing;}
+.focus-widget button:focus-visible,.focus-widget input:focus-visible,.focus-stats button:focus-visible,.focus-history summary:focus-visible { outline:3px solid #79b7ff;outline-offset:3px; }
+.focus-icon:hover,.focus-grip:hover,.focus-reset:hover { background:var(--focus-soft);color:var(--focus-accent); }
+.focus-widget-body { padding:15px 20px 17px; }
+.focus-phase { display:flex;justify-content:center;align-items:center;gap:6px;color:var(--focus-accent);font-size:12px;font-weight:700;margin:0 0 9px; }
+.focus-dot { display:inline-block;width:7px;height:7px;background:var(--focus-accent);border-radius:50%; }
+.focus-clock { width:164px;height:164px;margin:0 auto 17px;border-radius:50%;padding:5px;background:conic-gradient(var(--focus-accent) var(--focus-angle),var(--focus-soft) 0); }
+.focus-clock>div { border:6px solid #f6faff;background:#fff;border-radius:50%;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px; }
+.focus-clock [role=timer] { font-size:36px;font-weight:750;letter-spacing:-1.5px;font-variant-numeric:tabular-nums;line-height:1.1;color:#18365e; }
+.focus-clock small { font-size:10px;color:#6580a2;max-width:119px;text-align:center;line-height:1.4; }
+.focus-inputs { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+.focus-inputs label { color:#526d90;font-size:11px;font-weight:600;display:grid;gap:6px; }
+.focus-inputs input { width:100%;min-width:0;border:1px solid #dce8f6;background:#fff;border-radius:11px;padding:9px 11px;font-size:16px;font-variant-numeric:tabular-nums;color:#1f416c; }
+.focus-inputs input:disabled { background:#edf3fa;color:#6f83a1;opacity:1; }
+.focus-inputs input[aria-invalid=true] { border-color:#cc6a80; }
+.focus-actions { display:flex;gap:10px;margin-top:14px; }.focus-actions>.primary { flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 16px;font-size:13px; }
+.focus-widget.is-rest .primary { background:linear-gradient(110deg,#45b99f,#258f7b); }
+.focus-reset { width:43px;border:1px solid #dce8f6;background:white; }
+.focus-widget button:disabled { cursor:not-allowed;opacity:.5; }
+.focus-footnote { margin:11px 0 0;color:#627e9d;font-size:10px;text-align:center;line-height:1.5; }
+.focus-error { font-size:12px;color:#a33951;line-height:1.5;margin:10px 0 0; }.focus-error button { text-decoration:underline;color:inherit;font-weight:700; }
+.focus-widget.is-collapsed { width:251px;border-radius:17px;overflow:hidden; }.focus-widget.is-collapsed .focus-widget-header { border:0; }
+.focus-mini-time { font-size:17px;font-weight:750;font-variant-numeric:tabular-nums; }
+.focus-stats { margin:22px 0;padding:28px; }
+.focus-stats-heading { display:flex;justify-content:space-between;align-items:center;gap:20px; }.focus-stats-heading h2 { margin:6px 0; }.focus-stats-heading p { color:#6580a1;font-size:13px; }.focus-stats-heading>.secondary { display:flex;align-items:center;gap:7px;flex-shrink:0; }
+.focus-eyebrow { font-size:10px;letter-spacing:1.6px;color:#287bdc;font-weight:750; }
+.focus-metrics { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:24px 0; }
+.focus-metrics>div { position:relative;background:#f4f8ff;border:1px solid #e4eefa;border-radius:15px;padding:20px;display:flex;flex-direction:column;gap:6px; }
+.focus-metrics>div:nth-child(2) { background:#f6f4ff; }.focus-metrics>div:nth-child(3) { background:#eff9f5; }
+.focus-metrics svg { width:19px;height:19px;color:#3185e9;margin-bottom:2px; }.focus-metrics span { color:#5e7799;font-size:12px; }.focus-metrics strong { font-size:31px;line-height:1.2;color:#19385f;font-variant-numeric:tabular-nums; }.focus-metrics strong small { font-size:14px;font-weight:500;color:#627c9b; }.focus-metrics>div>small { font-size:10px;color:#697e9d; }
+.focus-analysis { display:grid;grid-template-columns:minmax(0,1.55fr) minmax(220px,1fr);gap:26px; }.focus-chart-wrap { min-width:0; }.focus-analysis h3 { font-size:16px;margin:0 0 8px;color:#23416a; }.focus-chart-unit { font-size:11px;color:#6d82a0;margin:0; }.focus-chart-wrap svg { width:100%;height:auto;display:block;overflow:visible; }.focus-chart-wrap text { font-family:inherit;font-size:11px;fill:#627c9b; }.focus-chart-wrap .focus-bar-value { fill:#216dc8;font-weight:700; }.focus-chart-note,.focus-definition { color:#7184a0;font-size:11px;line-height:1.6; }.focus-chart-note { margin:8px 0 0; }
+.focus-insights { background:#f8fbff;border:1px solid #e4edf9;border-radius:16px;padding:19px; }.focus-insights h3 { display:flex;align-items:center;gap:8px; }.focus-insights>p { color:#5e7597;font-size:13px;line-height:1.6;margin:12px 0; }.focus-advice { padding-top:12px;border-top:1px solid #e0ebf9;font-size:12px;line-height:1.6; }.focus-advice strong { color:#2e79c9; }.focus-advice p { margin:4px 0 0;color:#536f90; }.focus-definition { margin-top:20px; }
+.focus-history { margin-top:14px;border-top:1px solid #e6eef8;padding-top:14px; }.focus-history summary { cursor:pointer;color:#337ac9;font-size:13px;font-weight:650; }.focus-table-scroll { overflow:auto;margin-top:14px; }.focus-history table { width:100%;border-collapse:collapse;font-size:12px; }.focus-history th,.focus-history td { padding:10px 8px;text-align:left;border-bottom:1px solid #e7eef8; }.focus-history th { color:#637c9d;font-weight:600; }
+@media(max-width:700px) { .focus-widget { right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:310px; }.focus-stats { padding:20px; }.focus-stats-heading { flex-wrap:wrap; }.focus-metrics { gap:8px; }.focus-metrics>div { padding:12px; }.focus-metrics strong { font-size:24px; }.focus-metrics span { font-size:10px; }.focus-analysis { grid-template-columns:1fr;gap:18px; }.focus-metrics strong small { font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { .focus-widget * { transition:none !important; } }
+@media(max-width:700px) { .focus-chart-wrap text { font-size:20px; } }

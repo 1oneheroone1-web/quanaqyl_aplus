@@ -1,0 +1,722 @@
+[
+  {
+    "id": "sweets-kitkat-uji-matcha",
+    "name": "KitKat Uji Matcha",
+    "category": "sweets",
+    "price": 30,
+    "image": "/assets/shop/sweets/kitkat-uji-matcha.jpg",
+    "description": {
+      "en": "Matcha-flavored chocolate wafer snack",
+      "ru": "Вафли с шоколадом матча",
+      "kk": "Матча шоколады қосылған вафли"
+    }
+  },
+  {
+    "id": "sweets-pocky-chocolate",
+    "name": "Pocky Chocolate",
+    "category": "sweets",
+    "price": 25,
+    "image": "/assets/shop/sweets/pocky-chocolate.jpg",
+    "description": {
+      "en": "Chocolate-coated biscuit sticks",
+      "ru": "Палочки в шоколаде",
+      "kk": "Шоколадты таяқшалар"
+    }
+  },
+  {
+    "id": "sweets-pocky-strawberry",
+    "name": "Pocky Strawberry",
+    "category": "sweets",
+    "price": 25,
+    "image": "/assets/shop/sweets/pocky-strawberry.jpg",
+    "description": {
+      "en": "Strawberry-flavored coated biscuit sticks",
+      "ru": "Палочки с клубничной глазурью",
+      "kk": "Құлпынай глазуріндегі таяқшалар"
+    }
+  },
+  {
+    "id": "sweets-black-thunder",
+    "name": "Black Thunder",
+    "category": "sweets",
+    "price": 15,
+    "image": "/assets/shop/sweets/black-thunder.jpg",
+    "description": {
+      "en": "Crispy chocolate biscuit bar",
+      "ru": "Хрустящий шоколадный батончик",
+      "kk": "Қытырлақ шоколад батончик"
+    }
+  },
+  {
+    "id": "sweets-alfort",
+    "name": "Alfort",
+    "category": "sweets",
+    "price": 25,
+    "image": "/assets/shop/sweets/alfort.jpg",
+    "description": {
+      "en": "Chocolate-topped biscuit",
+      "ru": "Печенье с шоколадной плиткой",
+      "kk": "Шоколадты печенье"
+    }
+  },
+  {
+    "id": "sweets-takenoko-no-sato",
+    "name": "Takenoko no Sato",
+    "category": "sweets",
+    "price": 30,
+    "image": "/assets/shop/sweets/takenoko-no-sato.jpg",
+    "description": {
+      "en": "Bamboo-shoot-shaped chocolate cookies",
+      "ru": "Шоколадное печенье в форме бамбука",
+      "kk": "Бамбук пішінді шоколадты печенье"
+    }
+  },
+  {
+    "id": "sweets-kinoko-no-yama",
+    "name": "Kinoko no Yama",
+    "category": "sweets",
+    "price": 30,
+    "image": "/assets/shop/sweets/kinoko-no-yama.jpg",
+    "description": {
+      "en": "Mushroom-shaped chocolate biscuits",
+      "ru": "Печенье в форме грибочков",
+      "kk": "Саңырауқұлақ пішінді печенье"
+    }
+  },
+  {
+    "id": "sweets-apollo",
+    "name": "Apollo",
+    "category": "sweets",
+    "price": 20,
+    "image": "/assets/shop/sweets/apollo.jpg",
+    "description": {
+      "en": "Strawberry and chocolate sweets",
+      "ru": "Клубнично-шоколадные конфеты",
+      "kk": "Құлпынай мен шоколад кәмпиттері"
+    }
+  },
+  {
+    "id": "sweets-koala-s-march",
+    "name": "Koala's March",
+    "category": "sweets",
+    "price": 25,
+    "image": "/assets/shop/sweets/koala-s-march.jpg",
+    "description": {
+      "en": "Animal-shaped chocolate-filled biscuits",
+      "ru": "Печенье-коалы с шоколадной начинкой",
+      "kk": "Іші шоколадты коала печеньесі"
+    }
+  },
+  {
+    "id": "sweets-pie-no-mi",
+    "name": "Pie no Mi",
+    "category": "sweets",
+    "price": 30,
+    "image": "/assets/shop/sweets/pie-no-mi.jpg",
+    "description": {
+      "en": "Chocolate-filled mini puff pastry",
+      "ru": "Мини-слойки с шоколадом",
+      "kk": "Шоколадты шағын қатпарлы печенье"
+    }
+  },
+  {
+    "id": "sweets-hi-chew",
+    "name": "HI-CHEW",
+    "category": "sweets",
+    "price": 20,
+    "image": "/assets/shop/sweets/hi-chew.jpg",
+    "description": {
+      "en": "Chewy fruit-flavored candy",
+      "ru": "Жевательные фруктовые конфеты",
+      "kk": "Жеміс дәмді шайнайтын кәмпиттер"
+    }
+  },
+  {
+    "id": "sweets-puccho",
+    "name": "Puccho",
+    "category": "sweets",
+    "price": 20,
+    "image": "/assets/shop/sweets/puccho.jpg",
+    "description": {
+      "en": "Fruit chewy candies with gummy pieces",
+      "ru": "Жевательные конфеты с мармеладом",
+      "kk": "Мармелад қосылған шайнайтын кәмпиттер"
+    }
+  },
+  {
+    "id": "sweets-kororo",
+    "name": "Kororo",
+    "category": "sweets",
+    "price": 25,
+    "image": "/assets/shop/sweets/kororo.jpg",
+    "description": {
+      "en": "Juicy textured fruit gummies",
+      "ru": "Сочные фруктовые мармеладки",
+      "kk": "Шырынды жеміс мармелады"
+    }
+  },
+  {
+    "id": "sweets-pure-gummy",
+    "name": "Pure Gummy",
+    "category": "sweets",
+    "price": 25,
+    "image": "/assets/shop/sweets/pure-gummy.jpg",
+    "description": {
+      "en": "Sweet-and-sour heart-shaped gummies",
+      "ru": "Кисло-сладкие мармеладные сердечки",
+      "kk": "Қышқыл-тәтті мармелад жүрекшелер"
+    }
+  },
+  {
+    "id": "sweets-fettuccine-gummi",
+    "name": "Fettuccine Gummi",
+    "category": "sweets",
+    "price": 20,
+    "image": "/assets/shop/sweets/fettuccine-gummi.jpg",
+    "description": {
+      "en": "Flat ribbon-shaped gummies",
+      "ru": "Мармеладные ленточки",
+      "kk": "Таспа пішінді мармелад"
+    }
+  },
+  {
+    "id": "sweets-fruit-gummies",
+    "name": "Fruit Gummies",
+    "category": "sweets",
+    "price": 20,
+    "image": "/assets/shop/sweets/fruit-gummies.jpg",
+    "description": {
+      "en": "Fruit-flavored gummies",
+      "ru": "Фруктовый мармелад",
+      "kk": "Жеміс мармелады"
+    }
+  },
+  {
+    "id": "sweets-shigekix",
+    "name": "Shigekix",
+    "category": "sweets",
+    "price": 20,
+    "image": "/assets/shop/sweets/shigekix.jpg",
+    "description": {
+      "en": "Intensely sour chewy gummies",
+      "ru": "Очень кислые мармеладки",
+      "kk": "Өте қышқыл мармелад"
+    }
+  },
+  {
+    "id": "sweets-ramune",
+    "name": "Ramune",
+    "category": "sweets",
+    "price": 15,
+    "image": "/assets/shop/sweets/ramune.jpg",
+    "description": {
+      "en": "Soda-flavored tablet candies",
+      "ru": "Конфеты со вкусом лимонада",
+      "kk": "Лимонад дәмді кәмпиттер"
+    }
+  },
+  {
+    "id": "sweets-milky",
+    "name": "Milky",
+    "category": "sweets",
+    "price": 20,
+    "image": "/assets/shop/sweets/milky.jpg",
+    "description": {
+      "en": "Creamy milk candies",
+      "ru": "Нежные молочные конфеты",
+      "kk": "Нәзік сүтті кәмпиттер"
+    }
+  },
+  {
+    "id": "sweets-tokuno-milk-8-2",
+    "name": "Tokuno Milk 8.2",
+    "category": "sweets",
+    "price": 20,
+    "image": "/assets/shop/sweets/tokuno-milk-8-2.jpg",
+    "description": {
+      "en": "Rich milk-flavored hard candy",
+      "ru": "Сливочные молочные леденцы",
+      "kk": "Кілегейлі сүт кәмпиттері"
+    }
+  },
+  {
+    "id": "sweets-choco-ball",
+    "name": "Choco Ball",
+    "category": "sweets",
+    "price": 15,
+    "image": "/assets/shop/sweets/choco-ball.jpg",
+    "description": {
+      "en": "Small chocolate-coated sweets",
+      "ru": "Маленькие шоколадные конфеты",
+      "kk": "Шағын шоколад кәмпиттері"
+    }
+  },
+  {
+    "id": "sweets-tirol-choco-variety",
+    "name": "Tirol Choco Variety",
+    "category": "sweets",
+    "price": 30,
+    "image": "/assets/shop/sweets/tirol-choco-variety.jpg",
+    "description": {
+      "en": "Assorted individually wrapped mini chocolates",
+      "ru": "Набор мини-шоколадок",
+      "kk": "Шағын шоколадтар жиынтығы"
+    }
+  },
+  {
+    "id": "sweets-giant-caplico",
+    "name": "Giant Caplico",
+    "category": "sweets",
+    "price": 30,
+    "image": "/assets/shop/sweets/giant-caplico.jpg",
+    "description": {
+      "en": "Airy chocolate in a wafer cone",
+      "ru": "Воздушный шоколад в рожке",
+      "kk": "Вафли құтысындағы әуе шоколады"
+    }
+  },
+  {
+    "id": "sweets-lumonde",
+    "name": "Lumonde",
+    "category": "sweets",
+    "price": 25,
+    "image": "/assets/shop/sweets/lumonde.jpg",
+    "description": {
+      "en": "Crispy layered crepe biscuits",
+      "ru": "Хрустящее многослойное печенье",
+      "kk": "Қытырлақ көпқабатты печенье"
+    }
+  },
+  {
+    "id": "sweets-country-ma-am",
+    "name": "Country Ma'am",
+    "category": "sweets",
+    "price": 25,
+    "image": "/assets/shop/sweets/country-ma-am.jpg",
+    "description": {
+      "en": "Soft chocolate-chip cookies",
+      "ru": "Мягкое печенье с шоколадом",
+      "kk": "Шоколад қосылған жұмсақ печенье"
+    }
+  },
+  {
+    "id": "sweets-popin-cookin",
+    "name": "Popin' Cookin'",
+    "category": "sweets",
+    "price": 50,
+    "image": "/assets/shop/sweets/popin-cookin.jpg",
+    "description": {
+      "en": "DIY miniature sweet-making kit",
+      "ru": "Набор миниатюрных сладостей",
+      "kk": "Шағын тәттілер жиынтығы"
+    }
+  },
+  {
+    "id": "sweets-tokyo-banana",
+    "name": "Tokyo Banana",
+    "category": "sweets",
+    "price": 55,
+    "image": "/assets/shop/sweets/tokyo-banana.jpg",
+    "description": {
+      "en": "Banana custard-filled sponge cake",
+      "ru": "Бисквит с банановым кремом",
+      "kk": "Банан кремі бар бисквит"
+    }
+  },
+  {
+    "id": "sweets-shiroi-koibito",
+    "name": "Shiroi Koibito",
+    "category": "sweets",
+    "price": 60,
+    "image": "/assets/shop/sweets/shiroi-koibito.jpg",
+    "description": {
+      "en": "White chocolate sandwich biscuits",
+      "ru": "Печенье с белым шоколадом",
+      "kk": "Ақ шоколадты печенье"
+    }
+  },
+  {
+    "id": "sweets-potatochip-chocolate",
+    "name": "Potatochip Chocolate",
+    "category": "sweets",
+    "price": 50,
+    "image": "/assets/shop/sweets/potatochip-chocolate.jpg",
+    "description": {
+      "en": "Chocolate-coated potato chips",
+      "ru": "Чипсы в шоколаде",
+      "kk": "Шоколадпен қапталған чипсы"
+    }
+  },
+  {
+    "id": "sweets-cigare",
+    "name": "Cigare",
+    "category": "sweets",
+    "price": 45,
+    "image": "/assets/shop/sweets/cigare.jpg",
+    "description": {
+      "en": "Thin rolled butter cookies",
+      "ru": "Тонкие сливочные трубочки",
+      "kk": "Жұқа майлы түтікше печенье"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-campus-clear-notebook-cover",
+    "name": "Kokuyo Campus Clear Notebook Cover",
+    "category": "stationery",
+    "price": 35,
+    "image": "/assets/shop/stationery/kokuyo-campus-clear-notebook-cover.jpg",
+    "description": {
+      "en": "Protects and decorates school notebooks",
+      "ru": "Прозрачная обложка для тетради",
+      "kk": "Дәптерге арналған мөлдір қап"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-decorative-notebook-cover",
+    "name": "Kokuyo Decorative Notebook Cover",
+    "category": "stationery",
+    "price": 40,
+    "image": "/assets/shop/stationery/kokuyo-decorative-notebook-cover.jpg",
+    "description": {
+      "en": "Customizable clear cover for stickers or inserts",
+      "ru": "Обложка для любимых наклеек",
+      "kk": "Стикерлерге арналған қап"
+    }
+  },
+  {
+    "id": "stationery-midori-md-clear-notebook-cover",
+    "name": "Midori MD Clear Notebook Cover",
+    "category": "stationery",
+    "price": 35,
+    "image": "/assets/shop/stationery/midori-md-clear-notebook-cover.jpg",
+    "description": {
+      "en": "Protective minimalist transparent cover",
+      "ru": "Минималистичная прозрачная обложка",
+      "kk": "Қарапайым мөлдір қап"
+    }
+  },
+  {
+    "id": "stationery-midori-md-cordoba-notebook-cover",
+    "name": "Midori MD Cordoba Notebook Cover",
+    "category": "stationery",
+    "price": 60,
+    "image": "/assets/shop/stationery/midori-md-cordoba-notebook-cover.jpg",
+    "description": {
+      "en": "Lightweight elegant cover for MD notebooks",
+      "ru": "Лаконичная обложка для блокнота",
+      "kk": "Блокнотқа арналған сәнді қап"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-systemic-notebook-cover",
+    "name": "Kokuyo SYSTEMIC Notebook Cover",
+    "category": "stationery",
+    "price": 70,
+    "image": "/assets/shop/stationery/kokuyo-systemic-notebook-cover.jpg",
+    "description": {
+      "en": "Organizes two notebooks and accessories",
+      "ru": "Органайзер для двух тетрадей",
+      "kk": "Екі дәптерге арналған органайзер"
+    }
+  },
+  {
+    "id": "stationery-hobonichi-techo-planner-cover",
+    "name": "Hobonichi Techo Planner Cover",
+    "category": "stationery",
+    "price": 90,
+    "image": "/assets/shop/stationery/hobonichi-techo-planner-cover.jpg",
+    "description": {
+      "en": "Personalizes and protects a planner",
+      "ru": "Обложка для планера",
+      "kk": "Жоспарлағышқа арналған қап"
+    }
+  },
+  {
+    "id": "stationery-midori-haramaki-notebook-wrap",
+    "name": "Midori HARAMAKI Notebook Wrap",
+    "category": "stationery",
+    "price": 65,
+    "image": "/assets/shop/stationery/midori-haramaki-notebook-wrap.jpg",
+    "description": {
+      "en": "Soft knitted notebook wrap with pen storage",
+      "ru": "Мягкая вязаная обложка",
+      "kk": "Жұмсақ тоқылған қап"
+    }
+  },
+  {
+    "id": "stationery-midori-book-band-pen-case",
+    "name": "Midori Book Band Pen Case",
+    "category": "stationery",
+    "price": 50,
+    "image": "/assets/shop/stationery/midori-book-band-pen-case.jpg",
+    "description": {
+      "en": "Notebook-attached pencil pouch",
+      "ru": "Пенал на резинке для блокнота",
+      "kk": "Блокнотқа тағылатын қаламсауыт"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-campus-softring-notebook",
+    "name": "Kokuyo Campus Softring Notebook",
+    "category": "stationery",
+    "price": 45,
+    "image": "/assets/shop/stationery/kokuyo-campus-softring-notebook.jpg",
+    "description": {
+      "en": "Comfortable soft-ring writing",
+      "ru": "Тетрадь на мягких кольцах",
+      "kk": "Жұмсақ сақиналы дәптер"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-campus-slim-binder",
+    "name": "Kokuyo Campus Slim Binder",
+    "category": "stationery",
+    "price": 55,
+    "image": "/assets/shop/stationery/kokuyo-campus-slim-binder.jpg",
+    "description": {
+      "en": "Slim refillable notes organizer",
+      "ru": "Тонкая папка для конспектов",
+      "kk": "Жазбаларға арналған жұқа папка"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-campus-a7-mini-binder",
+    "name": "Kokuyo Campus A7 Mini Binder",
+    "category": "stationery",
+    "price": 35,
+    "image": "/assets/shop/stationery/kokuyo-campus-a7-mini-binder.jpg",
+    "description": {
+      "en": "Pocket notes for quick revision",
+      "ru": "Карманный мини-блокнот",
+      "kk": "Қалтаға арналған шағын блокнот"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-campus-study-planner",
+    "name": "Kokuyo Campus Study Planner",
+    "category": "stationery",
+    "price": 60,
+    "image": "/assets/shop/stationery/kokuyo-campus-study-planner.jpg",
+    "description": {
+      "en": "Tracks assignments and study sessions",
+      "ru": "Планер учебных занятий",
+      "kk": "Оқу жоспарлағышы"
+    }
+  },
+  {
+    "id": "stationery-midori-yuru-log-notebook",
+    "name": "Midori Yuru Log Notebook",
+    "category": "stationery",
+    "price": 50,
+    "image": "/assets/shop/stationery/midori-yuru-log-notebook.jpg",
+    "description": {
+      "en": "Illustrated creative daily journal",
+      "ru": "Блокнот для творческих записей",
+      "kk": "Шығармашылық жазба блокноты"
+    }
+  },
+  {
+    "id": "stationery-midori-color-notebook",
+    "name": "Midori Color Notebook",
+    "category": "stationery",
+    "price": 40,
+    "image": "/assets/shop/stationery/midori-color-notebook.jpg",
+    "description": {
+      "en": "Clean color-coded note organization",
+      "ru": "Блокнот с цветными разделами",
+      "kk": "Түрлі түсті бөлімдері бар блокнот"
+    }
+  },
+  {
+    "id": "stationery-hobonichi-weeks-planner",
+    "name": "Hobonichi Weeks Planner",
+    "category": "stationery",
+    "price": 85,
+    "image": "/assets/shop/stationery/hobonichi-weeks-planner.jpg",
+    "description": {
+      "en": "Compact weekly planning system",
+      "ru": "Компактный недельный планер",
+      "kk": "Шағын апталық жоспарлағыш"
+    }
+  },
+  {
+    "id": "stationery-zebra-mildliner-highlighters",
+    "name": "Zebra Mildliner Highlighters",
+    "category": "stationery",
+    "price": 45,
+    "image": "/assets/shop/stationery/zebra-mildliner-highlighters.jpg",
+    "description": {
+      "en": "Soft-color highlighting for revision",
+      "ru": "Текстовыделители нежных оттенков",
+      "kk": "Нәзік түсті мәтінбелгілегіштер"
+    }
+  },
+  {
+    "id": "stationery-zebra-sarasa-clip-gel-pens",
+    "name": "Zebra Sarasa Clip Gel Pens",
+    "category": "stationery",
+    "price": 40,
+    "image": "/assets/shop/stationery/zebra-sarasa-clip-gel-pens.jpg",
+    "description": {
+      "en": "Colorful smooth-writing gel pens",
+      "ru": "Цветные гелевые ручки",
+      "kk": "Түрлі түсті гель қаламдар"
+    }
+  },
+  {
+    "id": "stationery-pilot-frixion-erasable-pens",
+    "name": "Pilot FriXion Erasable Pens",
+    "category": "stationery",
+    "price": 50,
+    "image": "/assets/shop/stationery/pilot-frixion-erasable-pens.jpg",
+    "description": {
+      "en": "Erase and rewrite notes",
+      "ru": "Стираемые ручки",
+      "kk": "Өшірілетін қаламдар"
+    }
+  },
+  {
+    "id": "stationery-uni-kuru-toga-mechanical-pencil",
+    "name": "Uni Kuru Toga Mechanical Pencil",
+    "category": "stationery",
+    "price": 55,
+    "image": "/assets/shop/stationery/uni-kuru-toga-mechanical-pencil.jpg",
+    "description": {
+      "en": "Lead rotates for an even point",
+      "ru": "Механический карандаш",
+      "kk": "Механикалық қарындаш"
+    }
+  },
+  {
+    "id": "stationery-pentel-energel-pens",
+    "name": "Pentel EnerGel Pens",
+    "category": "stationery",
+    "price": 40,
+    "image": "/assets/shop/stationery/pentel-energel-pens.jpg",
+    "description": {
+      "en": "Quick-drying smooth gel ink",
+      "ru": "Гелевые ручки для конспектов",
+      "kk": "Жазбаға арналған гель қаламдар"
+    }
+  },
+  {
+    "id": "stationery-sun-star-metacil-metal-pencil",
+    "name": "Sun-Star Metacil Metal Pencil",
+    "category": "stationery",
+    "price": 60,
+    "image": "/assets/shop/stationery/sun-star-metacil-metal-pencil.jpg",
+    "description": {
+      "en": "Long-lasting metal-pencil writing",
+      "ru": "Металлический карандаш",
+      "kk": "Металл қарындаш"
+    }
+  },
+  {
+    "id": "stationery-lihit-lab-smart-fit-stand-pen-case",
+    "name": "LIHIT LAB Smart Fit Stand Pen Case",
+    "category": "stationery",
+    "price": 70,
+    "image": "/assets/shop/stationery/lihit-lab-smart-fit-stand-pen-case.jpg",
+    "description": {
+      "en": "Pouch stands upright on the desk",
+      "ru": "Пенал-подставка",
+      "kk": "Тік тұратын қаламсауыт"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-roll-sticky-notes",
+    "name": "Kokuyo Roll Sticky Notes",
+    "category": "stationery",
+    "price": 25,
+    "image": "/assets/shop/stationery/kokuyo-roll-sticky-notes.jpg",
+    "description": {
+      "en": "Cut sticky notes to length",
+      "ru": "Рулон стикеров для заметок",
+      "kk": "Орамдағы жабысқақ жазбалар"
+    }
+  },
+  {
+    "id": "stationery-kokuyo-foldable-sticky-notes",
+    "name": "Kokuyo Foldable Sticky Notes",
+    "category": "stationery",
+    "price": 25,
+    "image": "/assets/shop/stationery/kokuyo-foldable-sticky-notes.jpg",
+    "description": {
+      "en": "Compact foldable note storage",
+      "ru": "Складные стикеры",
+      "kk": "Жиналмалы стикерлер"
+    }
+  },
+  {
+    "id": "stationery-midori-film-index-sticky-notes",
+    "name": "Midori Film Index Sticky Notes",
+    "category": "stationery",
+    "price": 30,
+    "image": "/assets/shop/stationery/midori-film-index-sticky-notes.jpg",
+    "description": {
+      "en": "Color-coded page indexing",
+      "ru": "Полупрозрачные закладки",
+      "kk": "Жартылай мөлдір бетбелгілер"
+    }
+  },
+  {
+    "id": "stationery-midori-chiratto-index-clips",
+    "name": "Midori Chiratto Index Clips",
+    "category": "stationery",
+    "price": 40,
+    "image": "/assets/shop/stationery/midori-chiratto-index-clips.jpg",
+    "description": {
+      "en": "Reusable metal page tabs",
+      "ru": "Металлические закладки-зажимы",
+      "kk": "Металл қыстырғыш бетбелгілер"
+    }
+  },
+  {
+    "id": "stationery-king-jim-kitta-washi-tape",
+    "name": "King Jim KITTA Washi Tape",
+    "category": "stationery",
+    "price": 35,
+    "image": "/assets/shop/stationery/king-jim-kitta-washi-tape.jpg",
+    "description": {
+      "en": "Portable pre-cut decorative tape",
+      "ru": "Декоративные полоски washi",
+      "kk": "Сәндік washi жолақтары"
+    }
+  },
+  {
+    "id": "stationery-midori-xs-compact-scissors",
+    "name": "Midori XS Compact Scissors",
+    "category": "stationery",
+    "price": 45,
+    "image": "/assets/shop/stationery/midori-xs-compact-scissors.jpg",
+    "description": {
+      "en": "Small scissors for pencil cases",
+      "ru": "Компактные ножницы",
+      "kk": "Шағын қайшы"
+    }
+  },
+  {
+    "id": "stationery-midori-multi-ruler",
+    "name": "Midori Multi Ruler",
+    "category": "stationery",
+    "price": 35,
+    "image": "/assets/shop/stationery/midori-multi-ruler.jpg",
+    "description": {
+      "en": "Portable folding 30 cm ruler",
+      "ru": "Складная линейка",
+      "kk": "Жиналмалы сызғыш"
+    }
+  },
+  {
+    "id": "stationery-midori-mini-cleaner",
+    "name": "Midori Mini Cleaner",
+    "category": "stationery",
+    "price": 60,
+    "image": "/assets/shop/stationery/midori-mini-cleaner.jpg",
+    "description": {
+      "en": "Miniature eraser-crumb desktop sweeper",
+      "ru": "Мини-уборщик для стола",
+      "kk": "Үстелге арналған шағын тазалағыш"
+    }
+  }
+]

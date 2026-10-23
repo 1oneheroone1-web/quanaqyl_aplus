@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1790528169969,
+      "tag": "0000_useful_talisman",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1791741276307,
+      "tag": "0001_demonic_imperial_guard",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792667364996,
+      "tag": "0002_rainy_blue_marvel",
+      "breakpoints": true
+    }
+  ]
+}
