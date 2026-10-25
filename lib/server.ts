@@ -1,6 +1,6 @@
 import { database } from './database';
 import { getChatGPTUser } from '@/app/chatgpt-auth';
-import { authBaseURL } from '@/lib/auth';
+import { authOrigins } from '@/lib/auth-origins';
 import { defaultProfile } from '@/lib/profile';
 import { getShopState } from '@/lib/shop-server';
 export { database };
@@ -15,8 +15,8 @@ export function failure(e: unknown) { if (e instanceof ApiError)
 export function protect(req: Request) {
     const origin = req.headers.get('origin');
     // Next.js may normalize req.url to an internal host. Match the same trusted
-    // public origin used by authentication, rather than that internal URL.
-    if (origin && origin !== authBaseURL()) throw new ApiError('forbidden', 403);
+    // public origins used by authentication, rather than that internal URL.
+    if (origin && !authOrigins().trustedOrigins.includes(origin)) throw new ApiError('forbidden', 403);
     if (req.headers.get('sec-fetch-site') === 'cross-site') throw new ApiError('forbidden', 403);
 }
 export async function limitedBody(req: Request, max = 65536) {

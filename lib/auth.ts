@@ -2,24 +2,7 @@ import { betterAuth } from 'better-auth';
 import { APIError } from 'better-auth/api';
 import { getPool } from '@/lib/database';
 import { profileLimits } from '@/lib/profile';
-
-export function authBaseURL(): string {
-  const configured = process.env.BETTER_AUTH_URL?.trim();
-  const vercelURL = process.env.VERCEL === '1' ? process.env.VERCEL_URL?.trim() : undefined;
-  const value = configured || (vercelURL ? `https://${vercelURL}` : undefined)
-    || (process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : undefined);
-  if (!value) throw new Error('Set BETTER_AUTH_URL to the application origin.');
-
-  let url: URL;
-  try { url = new URL(value); }
-  catch { throw new Error('BETTER_AUTH_URL must be an absolute application origin.'); }
-  const loopback = ['localhost', '127.0.0.1', '[::1]'].includes(url.hostname);
-  if (url.username || url.password || url.pathname !== '/' || url.search || url.hash
-    || (url.protocol !== 'https:' && !(loopback && url.protocol === 'http:' && process.env.VERCEL !== '1'))) {
-    throw new Error('BETTER_AUTH_URL must be an HTTPS origin (HTTP is allowed only on local loopback).');
-  }
-  return url.origin;
-}
+import { authOrigins } from '@/lib/auth-origins';
 
 function checkedName(value: string): string {
   const name = value.trim();
@@ -34,14 +17,14 @@ function createAuth() {
   if (!secret || secret.length < 32) {
     throw new Error('Set BETTER_AUTH_SECRET to a random value of at least 32 characters.');
   }
-  const baseURL = authBaseURL();
+  const { baseURL, trustedOrigins } = authOrigins();
   return betterAuth({
     appName: 'QuanAQYL A+',
     baseURL,
     basePath: '/api/auth',
     secret,
     database: getPool(),
-    trustedOrigins: [baseURL],
+    trustedOrigins,
     emailAndPassword: {
       enabled: true,
       minPasswordLength: 12,
